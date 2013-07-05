@@ -27,7 +27,7 @@
      <body>    
           <div class="container">
                <div class="page-header">
-                    <a href="http://www.wykop.pl"><img src="img/logo_wykop_250.png"></a><h1><a href="http://www.wykop.pl/tag/sztafeta/">#Sztafeta</a> <small><a href="http://www.endomondo.com/challenges/9351501" class="muted pull-right">Rywalizacja Endomondo</a></small></h1>
+                    <a href="http://www.wykop.pl"><img src="img/logo_wykop_250.png"></a><h1><a href="http://www.wykop.pl/tag/roknasilowni/">#RokNaSilowni</a></h1>
                </div>
                <?php
                $procent_dystansu = $sztafeta->przebiegnietyDystans();
@@ -71,7 +71,7 @@
                                    echo '<tr>';
                                    echo "<td>$data</td>";
                                    echo "<td><a href=http://wykop.pl/ludzie/$value[nick]>$value[nick]</a></td>";
-                                   echo "<td>" . number_format($value['dystans'], 2) . " km</td>";
+                                   echo "<td>" . number_format($value['dystans'], 2) . " h</td>";
                                    echo '</tr>';
                                     $i++;
                                    if ($i % 20 == 0) {
