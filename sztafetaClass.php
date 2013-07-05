@@ -2,7 +2,7 @@
 
 include_once 'wykopAPI.php';
 
-class sztafeta {
+class rokNaSilowni {
 
          
     //dane dla wykopAPI
@@ -15,7 +15,7 @@ class sztafeta {
     private $dbPassword = '';
     
     
-    public $tag = '#sztafeta';
+    public $tag = '#roknasilowni';
     
    
     public function pobierzNajnowszeWpisy(){
@@ -29,7 +29,7 @@ class sztafeta {
             $result = $wykop->doRequest("search/entries/page/$strona", array('q' => $this->tag));
              foreach ($result as $r) {
                 
-                  if(!preg_match('@(#sztafetaraport)@', $r['body'])){
+                  if(!preg_match('@(#roknasilownistatystyki)@', $r['body'])){
                        
                     $r['body'] = str_replace(array('km', 'KM','\\', ' '), '', $r['body']);
                     $r['body'] = preg_replace('@\([^)]*\)@', '', $r['body']);
@@ -60,7 +60,7 @@ class sztafeta {
             $result = $wykop->doRequest("search/entries/page/$strona", array('q' => $this->tag));
              foreach ($result as $r) {
                 if(strtotime($r['date']) < strtotime('2013-04-06 15:30:45')){ $wyskocz = 1; } //jeżeli wpis jest starszy niż data -> wyskocz z pętli
-                    $wyjatek = preg_match('/(\#ksiezycowyspacer|\#rowerowyrownik)/', $r['body']); 
+                    $wyjatek = preg_match('/(\#roknasilowni/', $r['body']); 
                     $r['body'] = str_replace(array('km', 'KM','\\', ' '), '', $r['body']);
                     $r['body'] = preg_replace('@\([^)]*\)@', '', $r['body']);
                     $r['body'] = str_replace(array(','), '.', $r['body']);
@@ -160,7 +160,7 @@ class sztafeta {
             $zap = $polaczenie->prepare('SELECT SUM(`dystans`) as `pokonany_dystans` FROM `wpisy`');
             $zap->execute();
             $wynikZapytania = $zap->fetch(PDO::FETCH_ASSOC);
-            $wynikZapytania['procent_trasy'] = $wynikZapytania['pokonany_dystans'] / 24540  * 100;
+            $wynikZapytania['procent_trasy'] = $wynikZapytania['pokonany_dystans'] / 8760  * 100;
         } catch (PDOException $exc) {
             echo $exc->getMessage();
         }
@@ -332,15 +332,15 @@ class sztafeta {
             $najwiecejKmWDniuDystans = number_format($najwiecejKmWDniu['dystans'],2);
 
             // TODO jeżeli 2 lub więcej osób zrobiło taki sam dystans 
-            $wiadomosc = "Sztafeta trwa $dzien dni, do tej pory przebiegliśmy: $dystans km - $procent%.\n
-                        W dniu dzisiejszym przebiegliśmy $dzienDystans km.";
+            $wiadomosc = "Zabawa trwa $dzien dni, do tej pory na siłowni spędziliśmy: $dystans godzin - $procent%.\n
+                        W dniu dzisiejszym spędziliśmy $dzienDystans godzin.";
                         if($dzienDystans > $this->rekordDystansu()){
-                             $wiadomosc .= " Dziś przebiegliśmy najwięcej kilometrów w jednym dniu. BRAWO!\n";
+                             $wiadomosc .= " Dziś machaliśmy żelastwem najwięcej godzin w jednym dniu. BRAWO!\n";
                         }
-                        $wiadomosc .= "\nNajwięcej przebiegł(a) @$najwiecejKmWDniuNick - $najwiecejKmWDniuDystans km.";
+                        $wiadomosc .= "\nNajwięcej pakował(a) @$najwiecejKmWDniuNick - $najwiecejKmWDniuDystans godzin.";
             
              if(count($dolaczyli)>0){
-                 if(count($dolaczyli) == 1) $wiadomosc .= "\n\nDo sztafety dołączył(a): "; else $wiadomosc .= "\n\nDo sztafety dołączyli: "; 
+                 if(count($dolaczyli) == 1) $wiadomosc .= "\n\nDo zabawy dołączył(a): "; else $wiadomosc .= "\n\nDo zabawy dołączyli: "; 
                 
                 foreach ($dolaczyli as $value) {
                     $wiadomosc .= '@'.$value['nick']." ";
@@ -349,12 +349,12 @@ class sztafeta {
             }
             
             $wiadomosc .= "\nUwaga dotycząca dodawania wpisów.
-                 \nWynik zamieszczaj w pierwszej lini wpisu. Ułatwisz odejmowanie innym biegaczom oraz skryptowi.
-                 \nSchemat odejmowania: [Wynik z poprzedniego wpisu] - [Twój przebyty dystans] - [Twój przebyty dystans 2] - [Twój przebyty dystans 3] = [Wynik odejmowania]
-                 \nnp. 15375.59 km - 4 km - 6 km - 21,07 km= 15344,52 km
+                 \nWynik zamieszczaj w pierwszej lini wpisu. Ułatwisz odejmowanie innym pakerom oraz skryptowi.
+                 \nSchemat odejmowania: [Wynik z poprzedniego wpisu] - [Twoje godziny] = [Wynik odejmowania]
+                 \nnp. 8167,5 - 2,5 = 8165
                  \nnastępnie opcjonalnie zdjęcia, opis itp.
                  \nna końcu tagi.";
-            $wiadomosc .= "\n\nZnalazłeś błąd? Masz pomysł na dodatkową funkcjonalność? Napisz do mnie. Więcej statystyk na http://sztafeta.w0lny.pl\n#sztafeta #sztafetaraport ";
+            $wiadomosc .= "\n\nZnalazłeś błąd? Masz pomysł na dodatkową funkcjonalność? Napisz do mnie. Więcej statystyk na http://roknasilowni.pusku.com\n#roknasilowni #roknasilownistatystyki ";
             
             
             $wykop = new libs_Wapi($this->key, $this->secret);
