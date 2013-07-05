@@ -63,7 +63,7 @@
                                         <tr>
                                              <th> # </th>
                                              <th>Nick</th>
-                                             <th>Dystans</th>
+                                             <th>Godziny</th>
                                         </tr>
                                         <?php
                                    }
