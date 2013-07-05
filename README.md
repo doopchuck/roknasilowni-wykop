@@ -1,7 +1,8 @@
 sztafeta-wykop
 ==============
-Skrypt zliczający kilometry w zabawie rok na silowni. www.wykop.pl/tag/roknasilowni/
+Skrypt zliczający godziny w zabawie rok na silowni. www.wykop.pl/tag/roknasilowni/
+Fork oryginalnego skryptu https://github.com/frizikk/sztafeta-wykop frizikk'a.
 
-Nie zabijajcie mnie za ten "kod" :)
+Nie zabijajcie go za ten "kod" :)
 
 
