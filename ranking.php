@@ -68,7 +68,7 @@
                                    echo '<tr>';
                                    echo "<td>$y</td>";
                                    echo "<td><a href=http://wykop.pl/ludzie/$value[nick]>$value[nick]</a></td>";
-                                   echo "<td>" . number_format($value['pokonany_dystans'], 2) . " km</td>";
+                                   echo "<td>" . number_format($value['pokonany_dystans'], 2) . " h</td>";
                                    echo '</tr>';
                                     $i++;
                                    if ($i % 20 == 0) {
