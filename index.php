@@ -26,7 +26,7 @@ $(function () {
                 margin: [ 50, 50, 100, 80]
             },
             title: {
-                text: 'Dzienna suma dystansów'
+                text: 'Dzienna suma godzin'
             },
             xAxis: {
                 categories: [
@@ -59,7 +59,7 @@ $(function () {
             yAxis: {
                 min: 0,
                 title: {
-                    text: 'Kilometry'
+                    text: 'Godziny'
                 }
             },
             legend: {
@@ -67,7 +67,7 @@ $(function () {
             },
    
             series: [{
-                name: 'Kilometrów',
+                name: 'Godzin',
                 data: [
              <?php
              
@@ -118,7 +118,7 @@ $(function () {
           <script src="charts/js/modules/exporting.js"></script>
         <div class="container">
             <div class="page-header">
-                <a href="http://www.wykop.pl"><img src="img/logo_wykop_250.png"></a><h1><a href="http://www.wykop.pl/tag/sztafeta/">#Sztafeta</a> <small><a href="http://www.endomondo.com/challenges/9351501" class="muted pull-right">Rywalizacja Endomondo</a></small></h1>
+                <a href="http://www.wykop.pl"><img src="img/logo_wykop_250.png"></a><h1><a href="http://www.wykop.pl/tag/roknasilowni/">#RokNaSilowni</a></h1>
             </div>
             <?php
             $procent_dystansu = $sztafeta->przebiegnietyDystans();
