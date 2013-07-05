@@ -2,7 +2,7 @@
 
 include_once 'wykopAPI.php';
 
-class rokNaSilowni {
+class sztafeta {
 
          
     //dane dla wykopAPI
