@@ -60,7 +60,7 @@ class sztafeta {
             $result = $wykop->doRequest("search/entries/page/$strona", array('q' => $this->tag));
              foreach ($result as $r) {
                 if(strtotime($r['date']) < strtotime('2013-04-06 15:30:45')){ $wyskocz = 1; } //jeżeli wpis jest starszy niż data -> wyskocz z pętli
-                    $wyjatek = preg_match('/(\#roknasilowni/', $r['body']); 
+                    $wyjatek = preg_match('/\#roknasilowni/', $r['body']); 
                     $r['body'] = str_replace(array('km', 'KM','\\', ' '), '', $r['body']);
                     $r['body'] = preg_replace('@\([^)]*\)@', '', $r['body']);
                     $r['body'] = str_replace(array(','), '.', $r['body']);
