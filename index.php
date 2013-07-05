@@ -131,11 +131,11 @@ $(function () {
             <div class="row-fluid">
                 <div class="span4">
                     <table class="table table-striped">
-                        <caption><h3>TOP 5 DYSTANS</h3></caption>
+                        <caption><h3>TOP 5 Godziny</h3></caption>
                         <tr>
                             <th> # </th>
                             <th>Nick</th>
-                            <th>Pokonany dystans</th>
+                            <th>Przepakowane godziny</th>
                         </tr>
                         <?php
                         
@@ -145,7 +145,7 @@ $(function () {
                             echo '<tr>';
                             echo "<td>$i</td>";
                             echo "<td><a href=http://wykop.pl/ludzie/$value[nick]>$value[nick]</td>";
-                            echo "<td>" . number_format($value['pokonany_dystans'], 2) . " km</td>";
+                            echo "<td>" . number_format($value['pokonany_dystans'], 2) . " h</td>";
                             echo '</tr>';
                             $i++;
                             if ($i > 5)
@@ -159,11 +159,11 @@ $(function () {
                 </div>
                 <div class="span4">
                     <table class="table table-striped">
-                        <caption><h3>NAJWIĘCEJ KM W TYGODNIU</h3></caption>
+                        <caption><h3>NAJWIĘCEJ GODZIN W TYGODNIU</h3></caption>
                         <tr>
                             <th> # </th>
                             <th>Nick</th>
-                            <th>Pokonany dystans</th>
+                            <th>Przepakowane godziny</th>
                         </tr>
                         <?php
                         $i = 1;
@@ -172,7 +172,7 @@ $(function () {
                             echo '<tr>';
                             echo "<td>$i</td>";
                             echo "<td><a href=http://wykop.pl/ludzie/$value[nick]>$value[nick]</td>";
-                            echo "<td>" . number_format($value['pokonany_dystans'], 2) . " km</td>";
+                            echo "<td>" . number_format($value['pokonany_dystans'], 2) . " h</td>";
                             echo '</tr>';
                             $i++;
                             if ($i > 5)
@@ -192,7 +192,7 @@ $(function () {
                         <tr>
                             <th> # </th>
                             <th>Nick</th>
-                            <th>Pokonany dystans</th>
+                            <th>Przepakowane godziny</th>
                         </tr>
                         <?php
                         $i = 1;
@@ -201,7 +201,7 @@ $(function () {
                             echo '<tr>';
                             echo "<td>$i</td>";
                             echo "<td><a href=http://wykop.pl/ludzie/$value[nick]>$value[nick]</td>";
-                            echo "<td><a href=http://wykop.pl/wpis/$value[id_wpisu]>" . number_format($value['dystans'], 2) . " km</a></td>";
+                            echo "<td><a href=http://wykop.pl/wpis/$value[id_wpisu]>" . number_format($value['dystans'], 2) . " h</a></td>";
                             echo '</tr>';
                             $i++;
                             if ($i > 5)
@@ -246,7 +246,7 @@ $(function () {
                                     <caption><h3><?php echo $daneZawodnika[0]['nick']; ?></h3></caption>
                                     <tr>
                                         <th>lp.</th>
-                                        <th>Pokonany dystans</th>
+                                        <th>Przepakowane godziny</th>
                                         <th>Data</th>
                                     </tr>
                                     <?php
@@ -263,7 +263,7 @@ $(function () {
                                      }
                                      echo '<tr>';
                                      echo "<td>Razem:</td>";
-                                     echo "<td>$suma km</td>";
+                                     echo "<td>$suma h</td>";
                                      echo '</tr>';
                                     ?>
                     </table>
